@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmln:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</head>
+<body class="bg-secondary">
+
+	<br />
+	
+	<h2 th:text="${men}" class="text-white">
+		${men}	
+	</h2>
+	
+	<br />
+
+	<table class="table table-dark container">
+		
+		<thead>
+			<tr>
+				<td>
+					ID
+				</td>
+				<td>
+					Number
+				</td>
+				<td>
+					Operator
+				</td>
+				
+				<td>
+					Update
+				</td>
+				
+				<td>
+					Delete
+				</td>
+			</tr>		
+		</thead>
+		
+		<tbody th:each="cell : ${list_cell}">
+		
+			<tr>
+				
+				<td th:text="${cell.id_cell}">
+				</td>
+				
+				<td th:text="${cell.number}">
+				</td>
+				
+				<td th:text="${cell.operator}">
+				</td>
+				
+				<td>
+					<a th:href="@{/update_cell/} + ${cell.id_cell}" class="btn btn-info">
+						Update
+					</a>
+				</td>
+				
+				<td>
+					<a th:href="@{/delete_cell/} + ${cell.id_cell}" class="btn btn-warning">
+						Delete
+					</a>
+				</td>
+			
+			</tr>
+		
+		</tbody>
+	
+	</table>
+	
+	<div class="text-center m-auto">
+		<a th:href="@{/create_cell}" class="btn btn-warning">New mobile</a>
+	</div>
+
+</body>
+</html>
